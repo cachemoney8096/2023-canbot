@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -7,10 +9,10 @@ public class DriveTrain extends SubsystemBase {
 
 
 // identifying the type of motor and giving each on a number that is defined somewhere else
-    private static VictorSPX motorLeft1 = new VictorSPX(1);
-    private static VictorSPX motorLeft2 = new VictorSPX(2);
-    private static VictorSPX motorRight1 = new VictorSPX(3);
-    private static VictorSPX motorRight2 = new VictorSPX(4);
+    private static VictorSPX motorLeft1 = new VictorSPX(RobotMap.DRIVE_LEFT_MOTOR_1_ID);
+    private static VictorSPX motorLeft2 = new VictorSPX(RobotMap.DRIVE_LEFT_MOTOR_2_ID);
+    private static VictorSPX motorRight1 = new VictorSPX(RobotMap.DRIVE_RIGHT_MOTOR_1_ID);
+    private static VictorSPX motorRight2 = new VictorSPX(RobotMap.DRIVE_RIGHT_MOTOR_2_ID);
 
     // double means the same thing as float in python
     // setting how the speed should be interpreted the left ones are negative because they are backwards in the physical robot
