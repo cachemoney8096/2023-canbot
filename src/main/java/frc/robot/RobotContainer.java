@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.GenericHID;
 import frc.robot.subsystems.Crusher;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -57,5 +58,15 @@ public class RobotContainer {
     crusher.setDefaultCommand(
       new RunCommand(crusher::holdCrush, crusher).withName("Holding Crush")
     );
+
+    // drive controls
+    drivetrain.setDefaultCommand(
+        new RunCommand(
+                () ->
+                    drivetrain.move(
+                        MathUtil.applyDeadband(controller.getLeftY() + controller.getRightX(), 0.1),
+                        MathUtil.applyDeadband(controller.getLeftY() - controller.getRightX(), 0.1)),
+                drivetrain)
+            .withName("Manual Drive"));
   }
 }

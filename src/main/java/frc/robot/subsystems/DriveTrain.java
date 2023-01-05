@@ -14,20 +14,18 @@ public class DriveTrain extends SubsystemBase {
 
     // double means the same thing as float in python
     // setting how the speed should be interpreted the left ones are negative because they are backwards in the physical robot
-    public static void setLeftMotors(double speed) {
+    public void setLeftMotors(double speed) {
         motorLeft1.set(ControlMode.PercentOutput, -speed);
         motorLeft2.set(ControlMode.PercentOutput, -speed);
     }
 
-    public static void setRightMotors(double speed) {
+    public void setRightMotors(double speed) {
         motorRight1.set(ControlMode.PercentOutput, speed);
         motorRight2.set(ControlMode.PercentOutput, speed);
     }
     // makes wheels spin using methods above
-    public static void move(double left, double right){
+    public void move(double left, double right){
         setLeftMotors(left);
         setRightMotors(right);
     }
-
-    
 }
