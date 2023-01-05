@@ -15,15 +15,15 @@ public class Crusher extends SubsystemBase {
 
   private static VictorSPX motor = new VictorSPX(RobotMap.CRUSHER_MOTOR_ID);
 
-  public static void crush() {
+  public void crush() {
     motor.set(ControlMode.PercentOutput, Constants.CRUSHER_POWER);
   }
 
-  public static void uncrush() {
+  public void uncrush() {
     motor.set(ControlMode.PercentOutput, -Constants.CRUSHER_POWER);
   }
 
-  public static void holdCrush() {
+  public void holdCrush() {
     motor.set(ControlMode.PercentOutput, 0);
   }
 

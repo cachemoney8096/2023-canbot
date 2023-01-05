@@ -14,4 +14,5 @@ package frc.robot;
  */
 public final class RobotMap {
     public static final int CRUSHER_MOTOR_ID = 1;
+    public static final int DRIVER_CONTROLLER_INDEX = 0;
 }

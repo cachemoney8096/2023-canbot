@@ -5,12 +5,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Crusher;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.libs.XboxController;
 
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Crusher;
@@ -31,17 +31,12 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    INSTANCE = this;
     controller = new XboxController(RobotMap.DRIVER_CONTROLLER_INDEX);
     drivetrain = new DriveTrain();
     crusher  = new Crusher();
 
     // Configure the button bindings
     configureButtonBindings();
-  }
-
-  public void initialize() {
-    crusher.initialize();
   }
 
   /**
@@ -51,7 +46,6 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
     // crushing, uncrushing, and holding commands
     controller
       .BumperRight()
@@ -59,21 +53,13 @@ public class RobotContainer {
         new InstantCommand(crusher::crush, crusher).withName("Crushing"));
     crusher.setDefaultCommand(
       new RunCommand(crusher::holdCrush, crusher).withName("Holding Crush"));
-
+    
     controller
       .BumperLeft()
       .whileHeld(
         new InstantCommand(crusher::uncrush, crusher).withName("Uncrushing"));
     crusher.setDefaultCommand(
-      new RunCommand(crusher::holdUncrush, crusher).withName("Holding Uncrush")
-    )
+      new RunCommand(crusher::holdCrush, crusher).withName("Holding Crush")
+    );
   }
-
-  public static synchronized RobotContainer getInstance() {
-    if (INSTANCE == null) {
-      INSTANCE = new RobotContainer();
-    }
-    return INSTANCE;
-  }
-
 }
