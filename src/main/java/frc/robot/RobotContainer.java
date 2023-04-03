@@ -48,16 +48,10 @@ public class RobotContainer {
       .BumperRight()
       .whileHeld(
         new InstantCommand(crusher::crush, crusher).withName("Crushing"));
-    crusher.setDefaultCommand(
-      new RunCommand(crusher::holdCrush, crusher).withName("Holding Crush"));
-    
     controller
       .BumperLeft()
       .whileHeld(
         new InstantCommand(crusher::uncrush, crusher).withName("Uncrushing"));
-    crusher.setDefaultCommand(
-      new RunCommand(crusher::holdCrush, crusher).withName("Holding Crush")
-    );
 
     // drive controls
     drivetrain.setDefaultCommand(

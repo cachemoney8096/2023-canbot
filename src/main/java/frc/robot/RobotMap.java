@@ -13,7 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class RobotMap {
-    public static final int CRUSHER_MOTOR_ID = 1;
+    public static final int CRUSHER_MOTOR_CHANNEL = 1;
     public static final int DRIVER_CONTROLLER_INDEX = 0;
     public static final int DRIVE_LEFT_MOTOR_1_ID = 2;
     public static final int DRIVE_LEFT_MOTOR_2_ID = 3;

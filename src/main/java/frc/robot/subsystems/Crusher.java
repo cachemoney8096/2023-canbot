@@ -4,27 +4,21 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 
 public class Crusher extends SubsystemBase {
 
-  private static VictorSPX motor = new VictorSPX(RobotMap.CRUSHER_MOTOR_ID);
+  Servo motor = new Servo(RobotMap.CRUSHER_MOTOR_CHANNEL);
 
   public void crush() {
-    motor.set(ControlMode.PercentOutput, Constants.CRUSHER_POWER);
+    motor.set(Constants.SERVO_POS_PRESSED);
   }
 
   public void uncrush() {
-    motor.set(ControlMode.PercentOutput, -Constants.CRUSHER_POWER);
+    motor.set(Constants.SERVO_POS_UNPRESSED);
   }
-
-  public void holdCrush() {
-    motor.set(ControlMode.PercentOutput, 0);
-  }
-
 }

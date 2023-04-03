@@ -13,6 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final double CRUSHER_POWER = 0.5;
+    public static final double SERVO_POS_PRESSED = 1.0,
+        SERVO_POS_UNPRESSED = 0.0;
 
 }
