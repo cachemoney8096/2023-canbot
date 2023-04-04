@@ -43,15 +43,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // crushing, uncrushing, and holding commands
     controller
       .BumperRight()
       .whileHeld(
         new InstantCommand(crusher::crush, crusher).withName("Crushing"));
-    controller
-      .BumperLeft()
-      .whileHeld(
-        new InstantCommand(crusher::uncrush, crusher).withName("Uncrushing"));
+    
+    crusher.setDefaultCommand(new InstantCommand(crusher::uncrush, crusher));
 
     // drive controls
     drivetrain.setDefaultCommand(
